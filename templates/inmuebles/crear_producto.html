@@ -1,0 +1,106 @@
+{%extends 'index.html'%}
+
+    {% block titulo %}
+        Creación de productos
+    {% endblock titulo %}
+
+
+    {% block body %}
+    <div class="card">
+        <div class="card-header"> Crear producto</div>
+
+        <div class="card-body">
+            <form method="post" class="form-horizontal">
+
+                {% csrf_token %}
+
+                {% if error %}
+                    <h2> {{error}} </h2>
+
+                {% else %}
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.cuenta.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.cuenta}}</div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.concepto.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.concepto }}</div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.fecha_de_adquisicion.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.fecha_de_adquisicion }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.factura_o_donacion.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.factura_o_donacion }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.proveedor.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.proveedor }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.inventario_o_codigo_del_activo.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.inventario_o_codigo_del_activo }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.descripcion.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.descripcion }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.marca.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.marca }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.serie.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.serie }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.costo_de_adquisicion.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.costo_de_adquisicion }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.clasificacion.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.clasificacion }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.responsable.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.responsable }}</div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.estado_fisico.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.estado_fisico }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.ubicacion.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.ubicacion }}</div>
+                </div> 
+
+                <div class="form-group row">
+                    <div class="col col-md-3">{{ producto_form.observaciones.label }}</div>
+                    <div class="col-12 col-md-9">{{ producto_form.observaciones }}</div>
+                </div> 
+
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary"> Crear producto</button>
+                </div>    
+                
+                {% endif %}
+                
+            </form> 
+        </div>
+    </div>           
+    {% endblock body %}

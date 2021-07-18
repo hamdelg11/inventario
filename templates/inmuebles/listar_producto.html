@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+
+{% block titulo%}
+    Listado productos
+{% endblock titulo %}
+    
+
+{% block body %}
+        
+        {% if productos %}
+
+            <div class="form-group">
+                <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar elemento...">
+            </div>
+            <div class="table-responsive">
+            <table class="table table-striped table-dark" id="mytable">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cuenta</th>
+                        <th scope="col">Concepto</th>
+                        <th scope="col">Fecha de adquisicion</th>
+                        <th scope="col">Factura o donacio</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Inventario o codigo del activo</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Serie</th>
+                        <th scope="col">Costo de adquisicion</th>
+                        <th scope="col">Clasificacion</th>
+                        <th scope="col">Estado fisico</th>
+                        <th scope="col">Ubicación</th>
+                        <th scope="col">Observaciones</th>
+                        <th scope="col">Empleado</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for producto in productos %}
+                        <tr>
+                            <td>{{producto.id_producto}}</td>
+                            <td>{{producto.cuenta}}</td>
+                            <td>{{producto.concepto}}</td>
+                            <td>{{producto.fecha_de_adquisicion}}</td>
+                            <td>{{producto.factura_o_donacion}}</td>
+                            <td>{{producto.proveedor}}</td>
+                            <td>{{producto.inventario_o_codigo_del_activo}}</td>
+                            <td>{{producto.descripcion}}</td>
+                            <td>{{producto.marca}}</td>
+                            <td>{{producto.serie}}</td>
+                            <td> $ {{producto.costo_de_adquisicion}}</td>
+                            <td>{{producto.clasificacion}}</td>
+                            <td>{{producto.estado_fisico}}</td>
+                            <td>{{producto.ubicacion}}</td>
+                            <td>{{producto.observaciones}}</td>
+                            <td>{{producto.responsable_id}}</td>
+
+                            <td>
+                                <a href="{% url 'inmuebles:editar_producto' producto.id_producto %}" class="btn btn-primary btn-sm" >Editar</a>
+                                <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+
+        {% else %}
+
+            <h1> No existen productos </h1>
+
+        {% endif %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script>
+            // Write on keyup event of keyword input element
+            $(document).ready(function(){
+            $("#search").keyup(function(){
+            _this = this;
+            // Show only matching TR, hide rest of them
+            $.each($("#mytable tbody tr"), function() {
+            if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+            $(this).hide();
+            else
+            $(this).show();
+            });
+            });
+           });
+           </script>
+
+{% endblock body %}
+        

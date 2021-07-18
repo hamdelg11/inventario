@@ -1,0 +1,22 @@
+{%extends 'index.html'%}
+
+    {% block titulo %}
+        Eliminación de empleado
+    {% endblock titulo %}
+
+
+    {% block body %}
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="alert alert-warning" role="alert">
+
+            <h2>¿Desea eliminar el registro {{empleado.nombres}} {{empleado.apellidos}}?</h2>
+
+            </div>
+
+            <button type="submit"  class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'inmuebles:listar_empleado' %}" class="btn btn-primary">Cancelar</a>
+        </form>        
+    {% endblock body %}
